@@ -21,5 +21,7 @@ SynthDef("help-AudioIn",{ arg out=0;
 }).play;
 )
 
+//TO DO
+// - establish MIDI to Moog connection
 
 
