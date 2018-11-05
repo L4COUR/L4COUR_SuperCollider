@@ -57,7 +57,7 @@ Pdef(\moog, Pbind(
 		[42,54,46,48],
 		[66,14,55,87],
 		[44,34,68,64],
-	],inf),
+	],inf)-15,
 	\amp, Pwhite(15,30,inf),
 	\sustain, 0.5,
 	\dur, 0.2
@@ -73,7 +73,8 @@ Pdef(\moogcc, Pbind(
 	\chan, 0,
 	\ctlNum, 1,
 	\control, Pexprand(1, 50, inf).round,
-	\dur, 1/4,
+	\sustain, 0.5,
+	\dur, 0.2,
 
 )).play;
 )
