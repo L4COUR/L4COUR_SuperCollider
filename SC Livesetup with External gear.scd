@@ -16,7 +16,7 @@ s.scope //start Oscilloscope
 
 
 ( //Scarlett inputs (Moog Mother 32 & DFAM)
-SynthDef("help-AudioIn",{ arg out=0;
+SynthDef("help-AudioIn",{ arg out=0, pan=0;
 	Out.ar(out,
 		AudioIn.ar([1,1]) //Input 1 (stereo)
 	)
@@ -26,20 +26,6 @@ SynthDef("help-AudioIn",{ arg out=0;
 	Out.ar(out,
 		AudioIn.ar([2,2]) //Input 2 (stereo)
 	)
-}).play;
-)
-
-( // Moog 32 - Sequencer
-r = Routine({
-	{
-	[40,44,60,48,20,63,30,48].do{
-		arg nn;
-		n.noteOn(0, nn, 127);
-		0.1.wait;
-		n.noteOff(0, nn,127);
-		0.1.wait;
-		};
-	}.loop;
 }).play;
 )
 
@@ -53,14 +39,11 @@ Pdef(\moog, Pbind(
 	\midicmd, \noteOn,
 	\midiout, n,
 	\chan, 0,
-	\midinote, Pxrand([
-		[42,54,46,48],
-		[66,14,55,87],
-		[44,34,68,64],
-	],inf)-15,
-	\amp, Pwhite(15,30,inf),
-	\sustain, 0.5,
-	\dur, 0.2
+	\midinote, Pseq([29, 47, 22, 46, 24, 34], inf)+44,
+	\amp, 1,
+	\sustain, 0.75,
+	\dur, 4,
+	\pan, Pwhite(-0.8, 0.8, inf),
 
 )).play;
 )
@@ -72,9 +55,9 @@ Pdef(\moogcc, Pbind(
 	\midiout, n,
 	\chan, 0,
 	\ctlNum, 1,
-	\control, Pexprand(1, 50, inf).round,
+	\control, Pseq([60,44,60,48,20,53,30,48], inf),
 	\sustain, 0.5,
-	\dur, 0.2,
+	\dur, 4,
 
 )).play;
 )
