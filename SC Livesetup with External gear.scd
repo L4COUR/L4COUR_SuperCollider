@@ -8,6 +8,9 @@ ServerOptions.outDevices //show audio sources
 MIDIClient.init; //Initialize MIDI source
 MIDIClient.destinations; //routing MIDI
 n = MIDIOut.new(0); //setting up MIDI channel 1 = (0)
+// 0 = running ableton using the IAC bus
+// 1 = running supercollider standalone
+
 
 p = ProxySpace.push(s.boot,p);
 m = ProxyMixer(p,8);
@@ -39,10 +42,10 @@ Pdef(\moog, Pbind(
 	\midicmd, \noteOn,
 	\midiout, n,
 	\chan, 0,
-	\midinote, Pseq([29, 47, 22, 46, 24, 34], inf)+44,
+	\midinote, Pseq([74, 47, 74, 25, 74, 46, 74,55], inf)+14,
 	\amp, 1,
 	\sustain, 0.75,
-	\dur, 4,
+	\dur, 0.18,
 	\pan, Pwhite(-0.8, 0.8, inf),
 
 )).play;
@@ -55,9 +58,9 @@ Pdef(\moogcc, Pbind(
 	\midiout, n,
 	\chan, 0,
 	\ctlNum, 1,
-	\control, Pseq([60,44,60,48,20,53,30,48], inf),
-	\sustain, 0.5,
-	\dur, 4,
+	\control, Pseq([60,44,60,48,70,53,60,48], inf),
+	\sustain, 0.24,
+	\dur, 0.28,
 
 )).play;
 )
