@@ -42,10 +42,10 @@ Pdef(\moog, Pbind(
 	\midicmd, \noteOn,
 	\midiout, n,
 	\chan, 0,
-	\midinote, Pseq([74, 47, 74, 25, 74, 46, 74,55], inf)+14,
+	\midinote, Pseq([52,52,52,52,52,52,52,52], inf)-4,
 	\amp, 1,
-	\sustain, 0.75,
-	\dur, 0.18,
+	\sustain, 0.55,
+	\dur, 0.30,
 	\pan, Pwhite(-0.8, 0.8, inf),
 
 )).play;
